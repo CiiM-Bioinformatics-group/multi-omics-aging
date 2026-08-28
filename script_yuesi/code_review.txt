@@ -1,0 +1,49 @@
+All the scripts in final_code appear to run successfully. In addition, since there are quite a lot of scripts and I was not able to read every single one in full detail, I randomly selected several scripts and carefully reviewed their code for potential issues. Below is the detailed review.
+---------------------------------------------
+
+> Script 1.1 (since 1.1-1.8 similar, i only checked 1.1. )
+it tests the association between age and each of 91 cytokines across 489 samples by fitting separate linear models with gender as a covariate, followed by multiple testing correction to identify significant age-associated cytokines.
+
+- looks good and logical.
+
+
+> Script 1.9 
+it combines age-association results from multiple omics layers, classifies significant features by direction, and generates a multi-layer volcano plot colored by data type.
+
+- Overall, the plotting workflow is clear.
+
+
+> Script 2.1 
+it appears to run successfully and produces the expected heatmaps, so there is no obvious fatal coding error. 
+
+1.The main point to double-check is whether sample ID alignment is handled consistently throughout the script, since both rownames(basicPhenos) and basicPhenos$ID_500fg are used. If these two are fully consistent in your dataset, then this is unlikely to be a real issue.
+
+> Script 2.6 
+This script appears to run successfully and produces the expected figures, so there is no obvious fatal coding error. The main points to double-check are:
+
+1. Whether age_vec is explicitly defined in the script or reliably loaded from the .Rdata file
+2. Whether sample matching between cellcount_exp and pheno is fully consistent
+
+
+Model Script 
+> Script 3.2.1
+
+The main points to double-check are:
+
+1. Whether sample matching between cytokine and basicPhenos is fully consistent
+    The script uses ID_500fg to match samples and then reorders basicPhenos to follow cytokine. If this matching is correct in your dataset, then this is likely fine.
+2. Whether pvalue_threshold = 1 is intentional
+    In the final modeling step, this means all features are kept and no real p-value filtering is applied. If that was the intended setting, then there is no issue.
+3. Whether the train/validation split files loaded from the methylation results are meant to be reused here
+
+The script imports split indices from a methylation-based .rds file and applies them to the cytokine data. If the goal is to keep the exact same splits across omics layers, then this is fine.
+
+> Script 3.2.7
+
+ The main points to double-check are:
+
+1. Whether sample matching is fully consistent across all omics layers and basicPhenos
+The script builds common_samples across multiple datasets and then reorders basicPhenos_common to match them. If this matching is correct in your dataset, then this is likely fine.
+
+
+April 25 2026 by Yuesi
