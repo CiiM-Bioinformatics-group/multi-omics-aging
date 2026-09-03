@@ -7,3 +7,5 @@ __pycache__/
 .DS_Store
 *.err
 *.out
+/3.1_prediction_elasticnet_gender/
+/script_yuesi/
