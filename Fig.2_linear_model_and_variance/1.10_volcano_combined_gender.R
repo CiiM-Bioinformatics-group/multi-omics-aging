@@ -1,7 +1,6 @@
 # Combined volcano-plot figures for the age~Gender association results
 # from all 9 molecular layers (the output of scripts/1.1_..1.10_*_gender.R).
-# Run from the repository root. No data is included in this repo -- see
-# README for the expected input layout.
+
 
 library(ggplot2)
 library(dplyr)

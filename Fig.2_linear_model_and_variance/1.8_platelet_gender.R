@@ -1,10 +1,4 @@
 # Platelet count ~ Age association analysis (adjusted for Gender)
-# Run from the repository root. No data is included in this repo -- see
-# README for the expected input layout.
-#
-# NOTE (see README "Known issues"): unlike the other layers, this script
-# stops after writing the main FDR CSV (no RData snapshot, no sig-only
-# export), matching the original script exactly.
 
 library(readxl)
 library(dplyr)

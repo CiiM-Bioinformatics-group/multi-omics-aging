@@ -1,12 +1,5 @@
 # Hormone ~ Age association analysis (adjusted for Gender)
-# Run from the repository root. No data is included in this repo -- see
-# README for the expected input layout.
-#
-# NOTE (see README "Known issues"): the sig column below is reclassified
-# for the volcano plot colors before the final sig-only export, so that
-# export is always empty; and the geom_text_repel label references
-# `hormone` (the raw data object) rather than a column of top4_combined.
-# Both are kept as-is to match the original results.
+
 
 library(readxl)
 library(readr)

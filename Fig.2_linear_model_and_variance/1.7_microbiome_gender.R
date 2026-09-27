@@ -1,16 +1,5 @@
 # Microbiome pathway abundance ~ Age association analysis (adjusted for
-# Gender). Run from the repository root. No data is included in this repo
-# -- see README for the expected input layout.
-#
-# NOTE (see README "Known issues"), kept as-is to match the original
-# results:
-# 1) if any pathway triggers the low-sample/zero-variance skip branch
-#    inside run_age_gender_lm(), do.call(rbind, ...) errors on mismatched
-#    columns -- a pre-existing issue in the original script.
-# 2) the sig column is reclassified for the volcano plot colors before the
-#    final sig-only export, so that export is always empty.
-# 3) the volcano plot is built but never written to a file (no
-#    png()/dev.off() around it, unlike the olink/hormone scripts).
+# Gender). 
 
 library(readxl)
 library(readr)

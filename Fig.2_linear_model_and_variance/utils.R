@@ -1,9 +1,7 @@
 # Path config + shared helpers for the 1.x_*.R layer scripts.
 # Run scripts from the repository root: source("R/utils.R")
 
-## --- paths (edit defaults, or override via env vars) ---
-# raw_data_dir: shared 500FG cohort raw-data store (read-only)
-# project_dir : this project's own derived data + outputs
+## --- paths  ---
 raw_data_dir <- Sys.getenv("FG500_RAW_DATA_DIR", unset = "data/raw_cohort")
 project_dir  <- Sys.getenv("FG500_PROJECT_DIR",  unset = ".")
 
@@ -11,9 +9,6 @@ project_dir  <- Sys.getenv("FG500_PROJECT_DIR",  unset = ".")
 basic_phenos_path <- file.path(project_dir,"Age_group_basicPhenos.csv")
 
 ## --- shared functions ---
-
-# Restrict feature_mat + basicPhenos to shared sample IDs, aligned to
-# feature_mat's row order.
 prep_filter_match <- function(feature_mat, basicPhenos) {
   idx <- intersect(rownames(feature_mat), rownames(basicPhenos))
   feature_filter <- feature_mat[idx, , drop = FALSE]
@@ -30,12 +25,6 @@ clean_gender <- function(basicPhenos_filter_match) {
 
 # Fit feature ~ age + Gender per column of feature_filter; return
 # estimate/p/signed -log10(p)/padj (BH)/sig ("sig" if padj < 0.05).
-#
-# transform: applied to each feature column before modeling -- differs by
-# layer (log(x+1), identity, or asinh) and changes the numeric results, so
-# match it to the original per-layer script.
-# min_n / require_variance: microbiome-only. Drop incomplete rows first;
-# skip (NA row) a feature with fewer than min_n samples or zero variance.
 run_age_gender_lm <- function(feature_filter,
                                basicPhenos_filter_match,
                                transform = function(x) log(x + 1),

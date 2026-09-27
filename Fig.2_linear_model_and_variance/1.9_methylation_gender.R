@@ -1,6 +1,5 @@
 # Methylation (M-value) ~ Age association analysis (adjusted for Gender)
-# Run from the repository root. No data is included in this repo -- see
-# README for the expected input layout.
+
 
 library(readxl)
 library(dplyr)
