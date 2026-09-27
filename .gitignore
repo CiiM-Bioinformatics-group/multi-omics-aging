@@ -9,3 +9,8 @@ __pycache__/
 *.out
 /3.1_prediction_elasticnet_gender/
 /script_yuesi/
+/clinical_validation_application/
+/prediction_elasticnet_orginal_sample_size/
+/tabpfn/
+/Fig.2_linear_model_and_variance/9_500FG_methy_gender_linear.r
+*.r
